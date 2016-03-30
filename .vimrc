@@ -66,7 +66,7 @@ imap <Down> <Nop>
 set wildignore+=*/tmp/*,*/target/*,*.class,*/.git/*,*/target,*.pyc
 
 " Formatter for scala code
-au BufEnter *.scala setl formatprg=java\ -jar\ /usr/local/Cellar/scalariform/0.1.6/libexec/scalariform.jar\ -f\ -q\ +compactControlReadability\ +doubleIndentClassDeclaration\ +preserveDanglingCloseParenthesis\ +preserveSpaceBeforeArguments\ --stdin\ --stdout
+au BufEnter *.scala setl formatprg=java\ -jar\ /usr/local/Cellar/scalariform/0.1.6/libexec/scalariform.jar\ -f\ -q\ +alignParameters\ +rewriteArrowSymbols\ +alignSingleLineCaseStatements\ --stdin\ --stdout
 
 " Maps gq to = if scala file
 autocmd Filetype scala :nmap = gq
@@ -149,6 +149,7 @@ set ignorecase
 set smartcase
 
 set background=dark
+set t_Co=256
 let g:molokai_original = 0
 let g:solarized_termcolors = 16
 let g:rehash256 = 0
@@ -164,8 +165,3 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
-
-:au FocusLost * :wa
-:set autowriteall
-
-:set autoread
